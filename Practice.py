@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter.ttk import *
 
-print("Hello World!")
+print("This is Snehashish!")
 root = Tk()
 
 root.title("First_Program")
