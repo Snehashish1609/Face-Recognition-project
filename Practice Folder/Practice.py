@@ -1,12 +1,12 @@
 from tkinter import *
 from tkinter.ttk import *
 
-print("Final branch merging PR! test 2")
+print("Final branch merging PR! test 3")
 root = Tk()
 
-root.title("First_Program")
+root.title("Practice_Program")
 
 
-label = Label(root, text="Indra Gay !").pack()
+label = Label(root, text="Indra Gay!").pack()
 
 root.mainloop()
