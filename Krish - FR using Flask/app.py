@@ -19,11 +19,11 @@ idb_face_encoding = face_recognition.face_encodings(idb_image)[0]
 known_face_encodings = [
     krish_face_encoding,
     sneh_face_encoding,
-    idb_face_encoding,
+    idb_face_encoding
 ]
 known_face_names = [
     "Krish",
-    "Snehashish"
+    "Snehashish",
     "Indra Deb Banerjee"
 ]
 # Initialize some variables
