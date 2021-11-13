@@ -1,5 +1,3 @@
-
-
 from flask import Flask, render_template, Response
 import cv2
 import face_recognition
@@ -14,14 +12,19 @@ krish_face_encoding = face_recognition.face_encodings(krish_image)[0]
 sneh_image = face_recognition.load_image_file("Sneh/sneh.jpg")
 sneh_face_encoding = face_recognition.face_encodings(sneh_image)[0]
 
+idb_image = face_recognition.load_image_file("IDB/IDB.jpg")
+idb_face_encoding = face_recognition.face_encodings(idb_image)[0]
+
 # Create arrays of known face encodings and their names
 known_face_encodings = [
     krish_face_encoding,
-    sneh_face_encoding
+    sneh_face_encoding,
+    idb_face_encoding,
 ]
 known_face_names = [
     "Krish",
     "Snehashish"
+    "Indra Deb Banerjee"
 ]
 # Initialize some variables
 face_locations = []
