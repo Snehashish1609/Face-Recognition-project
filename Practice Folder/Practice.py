@@ -7,6 +7,6 @@ root = Tk()
 root.title("Practice_Program")
 
 
-label = Label(root, text="Indra Gay!").pack()
+label = Label(root, text="The World is Gay").pack()
 
 root.mainloop()
