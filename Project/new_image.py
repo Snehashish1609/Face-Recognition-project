@@ -1,7 +1,7 @@
 import cv2
 import os
 
-directory = r'D:\Face-Recognition-project\Project\images'
+directory = r'D:\code\Face-Recognition-project\Project\images'
 cam = cv2.VideoCapture(0)
 
 cv2.namedWindow("test")
