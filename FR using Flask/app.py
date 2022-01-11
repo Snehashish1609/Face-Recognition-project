@@ -21,13 +21,19 @@ idb_image = face_recognition.load_image_file("IDB/IDB.jpg")
 idb_face_encoding = face_recognition.face_encodings(idb_image)[0]
 print(list(idb_face_encoding))#get encoding value as a list
 
+ani_image = face_recognition.load_image_file("Ani/Ani.jpg")
+ani_face_encoding = face_recognition.face_encodings(ani_image)[0]
+print(list(ani_face_encoding))#get encoding value as a list
+
 # Create arrays of known face encodings and their names
 known_face_encodings = [
     #make this into a dynamic array
+    ani_face_encoding,
     sneh_face_encoding,
     idb_face_encoding
 ]
 known_face_names = [
+    "Anirban",
     "Snehashish",
     "Indra Deb Banerjee"
 ]

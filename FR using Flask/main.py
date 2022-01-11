@@ -15,8 +15,8 @@ import numpy as np
 video_capture = cv2.VideoCapture(0)
 
 # Load a sample picture and learn how to recognize it.
-krish_image = face_recognition.load_image_file("Krish/krish.jpg")
-krish_face_encoding = face_recognition.face_encodings(krish_image)[0]
+#krish_image = face_recognition.load_image_file("Krish/krish.jpg")
+#krish_face_encoding = face_recognition.face_encodings(krish_image)[0]
 
 # Load a second sample picture and learn how to recognize it.
 bradley_image = face_recognition.load_image_file("Sneh/sneh.jpg")
@@ -27,12 +27,12 @@ idb_face_encoding = face_recognition.face_encodings(idb_image)[0]
 
 # Create arrays of known face encodings and their names
 known_face_encodings = [
-    krish_face_encoding,
+    #krish_face_encoding,
     bradley_face_encoding,
     idb_face_encoding
 ]
 known_face_names = [
-    "Krish",
+    #"Krish",
     "Snehashish",
     "Indra Deb Banerjee"
 ]
