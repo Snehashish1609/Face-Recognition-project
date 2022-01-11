@@ -19,7 +19,7 @@ print(type(sneh_face_encoding)) #print encoding type
 
 idb_image = face_recognition.load_image_file("IDB/IDB.jpg")
 idb_face_encoding = face_recognition.face_encodings(idb_image)[0]
-print(list(idb_face_encoding))#get encoding value as a list
+#print(list(idb_face_encoding))#get encoding value as a list
 
 ani_image = face_recognition.load_image_file("Ani/Ani.jpg")
 ani_face_encoding = face_recognition.face_encodings(ani_image)[0]
@@ -55,23 +55,23 @@ def gen_frames():
             rgb_small_frame = small_frame[:, :, ::-1]
 
             # Only process every other frame of video to save time
-           
-            # Find all the faces and face encodings in the current frame of video
-            face_locations = face_recognition.face_locations(rgb_small_frame)
-            face_encodings = face_recognition.face_encodings(rgb_small_frame, face_locations)
-            face_names = []
-            for face_encoding in face_encodings:
-                # See if the face is a match for the known face(s)
-                matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
-                name = "Unknown"
-                # Or instead, use the known face with the smallest distance to the new face
-                face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
-                best_match_index = np.argmin(face_distances)
-                if matches[best_match_index]:
-                    name = known_face_names[best_match_index]
+            if process_this_frame:
+                # Find all the faces and face encodings in the current frame of video
+                face_locations = face_recognition.face_locations(rgb_small_frame)
+                face_encodings = face_recognition.face_encodings(rgb_small_frame, face_locations)
+                face_names = []
+                for face_encoding in face_encodings:
+                    # See if the face is a match for the known face(s)
+                    matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
+                    name = "Unknown"
+                    # Or instead, use the known face with the smallest distance to the new face
+                    face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
+                    best_match_index = np.argmin(face_distances)
+                    if matches[best_match_index]:
+                        name = known_face_names[best_match_index]
 
-                face_names.append(name)
-            
+                    face_names.append(name)
+            process_this_frame = not process_this_frame
 
             # Display the results
             for (top, right, bottom, left), name in zip(face_locations, face_names):
