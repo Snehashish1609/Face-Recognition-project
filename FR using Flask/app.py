@@ -4,7 +4,7 @@ import pymongo
 import face_recognition
 import numpy as np
 
-app=Flask(__name__)
+app = Flask(__name__)
 
 '''Database
 client = pymongo.MongoClient('localhost', 27017)
@@ -71,7 +71,7 @@ def gen_frames():
                         name = known_face_names[best_match_index]
 
                     face_names.append(name)
-            process_this_frame = not process_this_frame
+            #process_this_frame = not process_this_frame
 
             # Display the results
             for (top, right, bottom, left), name in zip(face_locations, face_names):
