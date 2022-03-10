@@ -15,15 +15,12 @@ camera = cv2.VideoCapture(0)
 # Load a second sample picture and learn how to recognize it.
 sneh_image = face_recognition.load_image_file("Sneh/sneh.jpg")
 sneh_face_encoding = face_recognition.face_encodings(sneh_image)[0]
-print(type(sneh_face_encoding)) #print encoding type
 
 idb_image = face_recognition.load_image_file("IDB/IDB.jpg")
 idb_face_encoding = face_recognition.face_encodings(idb_image)[0]
-#print(list(idb_face_encoding))#get encoding value as a list
 
 ani_image = face_recognition.load_image_file("Ani/Ani.jpg")
 ani_face_encoding = face_recognition.face_encodings(ani_image)[0]
-print(list(ani_face_encoding))#get encoding value as a list
 
 # Create arrays of known face encodings and their names
 known_face_encodings = [
@@ -101,8 +98,8 @@ def index():
 def login():
     return render_template('login.html')
 @app.route('/signup/')
-def signup():
-    return render_template('signup.html')
+def vfeed():
+    return render_template('vfeed.html')
 @app.route('/video_feed')
 def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
