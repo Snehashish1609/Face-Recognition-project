@@ -11,5 +11,5 @@ def signout():
   return User().signout()
 
 @app.route('/user/login', methods=['POST'])
-def login():
-  return User().login()
+def login_demo():
+  return User().login_demo()
