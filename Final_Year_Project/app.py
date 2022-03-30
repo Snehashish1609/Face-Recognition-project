@@ -13,13 +13,13 @@ app = Flask(__name__)
 camera = cv2.VideoCapture(0)
 
 # Load a second sample picture and learn how to recognize it.
-sneh_image = face_recognition.load_image_file("Sneh/sneh.jpg")
+sneh_image = face_recognition.load_image_file("user-iamge/sneh.jpg")
 sneh_face_encoding = face_recognition.face_encodings(sneh_image)[0]
 
-idb_image = face_recognition.load_image_file("IDB/IDB.jpg")
+idb_image = face_recognition.load_image_file("user-image/IDB.jpg")
 idb_face_encoding = face_recognition.face_encodings(idb_image)[0]
 
-ani_image = face_recognition.load_image_file("Ani/Ani.jpg")
+ani_image = face_recognition.load_image_file("user-image/Ani.jpg")
 ani_face_encoding = face_recognition.face_encodings(ani_image)[0]
 
 # Create arrays of known face encodings and their names
