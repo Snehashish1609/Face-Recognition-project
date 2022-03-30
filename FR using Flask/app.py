@@ -7,8 +7,8 @@ import numpy as np
 app = Flask(__name__)
 
 #Database
-client = pymongo.MongoClient('localhost', 27017)
-db = client.profile
+#client = pymongo.MongoClient('localhost', 27017)
+#db = client.profile
 
 camera = cv2.VideoCapture(0)
 
