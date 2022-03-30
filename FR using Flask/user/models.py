@@ -1,4 +1,4 @@
-'''from flask import Flask, jsonify, request, session, redirect
+from flask import Flask, jsonify, request, session, redirect
 #from passlib.hash import pbkdf2_sha256
 from app import db
 import uuid
@@ -38,14 +38,13 @@ class User:
     session.clear()
     return redirect('/')
   
-  def login(self):
+  def login_demo(self):
 
     user = db.users.find_one({
       "email": request.form.get('email')
     })
 
-    if user and pbkdf2_sha256.verify(request.form.get('password'), user['password']):
-      return self.start_session(user)
+    '''if user and pbkdf2_sha256.verify(request.form.get('password'), user['password']):
+      return self.start_session(user)'''
     
     return jsonify({ "error": "Invalid login credentials" }), 401
-    '''
