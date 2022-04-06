@@ -1,35 +1,43 @@
 from flask import Flask, jsonify, request, session, redirect
 from passlib.hash import pbkdf2_sha256
-from app import db
 import uuid
 import face_recognition
 
 # face_data contains all the face encoding arrays
 class face_data:
-  # Load a second sample picture and learn how to recognize it.
-  sneh_image = face_recognition.load_image_file("user-image/sneh.jpg")
-  sneh_face_encoding = face_recognition.face_encodings(sneh_image)[0]
+    def __init__(self):
+        # Load a second sample picture and learn how to recognize it.
+        sneh_image = face_recognition.load_image_file("user-image/sneh.jpg")
+        sneh_face_encoding = face_recognition.face_encodings(sneh_image)[0]
 
-  idb_image = face_recognition.load_image_file("user-image/IDB.jpg")
-  idb_face_encoding = face_recognition.face_encodings(idb_image)[0]
+        idb_image = face_recognition.load_image_file("user-image/IDB.jpg")
+        idb_face_encoding = face_recognition.face_encodings(idb_image)[0]
 
-  ani_image = face_recognition.load_image_file("user-image/Ani.jpg")
-  ani_face_encoding = face_recognition.face_encodings(ani_image)[0]
+        ani_image = face_recognition.load_image_file("user-image/Ani.jpg")
+        ani_face_encoding = face_recognition.face_encodings(ani_image)[0]
 
-  # Create arrays of known face encodings and their names
-  known_face_encodings = [
-    #make this into a dynamic array
-    ani_face_encoding,
-    sneh_face_encoding,
-    idb_face_encoding
-  ]
-  known_face_names = [
-    "Anirban",
-    "Snehashish",
-    "Indra Deb Banerjee"
-  ]
+        # Create arrays of known face encodings and their names
+        self.known_face_encodings = [
+          #make this into a dynamic array
+          ani_face_encoding,
+          sneh_face_encoding,
+          idb_face_encoding
+        ]
+        self.known_face_names = [
+            "Anirban",
+            "Snehashish",
+            "Indra Deb Banerjee"
+        ]
+
+    def get_fe(self):
+        return self.known_face_encodings
+
+    def get_fn(self):
+        return self.known_face_names
 
 
+
+from app import db
 class User:
 
   def start_session(self, user):
@@ -43,10 +51,11 @@ class User:
 
     # Create the user object
     user = {
-      "_id": uuid.uuid4().hex,
-      "name": request.form.get('name'),
-      "phone": request.form.get('phone'),
-      "address": request.form.get('address')
+        "_id": uuid.uuid4().hex,
+        "customerID": request.form.get('id'),
+        "name": request.form.get('name'),
+        "phone": request.form.get('phone'),
+        "address": request.form.get('add')
     }
 
     # Encrypt the password
@@ -65,7 +74,7 @@ class User:
     session.clear()
     return redirect('/')
   
-  def login(self):
+  '''def login(self):
 
     user = db.users.find_one({
       "phone": request.form.get('phone')
@@ -74,4 +83,4 @@ class User:
     if user and pbkdf2_sha256.verify(request.form.get('password'), user['password']):
       return self.start_session(user)
     
-    return jsonify({ "error": "Invalid login credentials" }), 401
+    return jsonify({ "error": "Invalid login credentials" }), 401'''

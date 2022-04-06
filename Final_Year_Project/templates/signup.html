@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>SignUp Page</title>
-	<link rel="stylesheet" {{ url_for('static', filename='styles.css') }}>
+	<link rel="stylesheet" href = "{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 	
@@ -34,8 +34,8 @@
         <label for="" class="label">Phone Number</label>
       </div>
       <div class="text">   
-        <div class="login">Already a member? <a href="login.html">Login Now</a></div>   
-        <input type="submit" class="submitBtn" value="Sign up">
+        <div class="login">Already a member? <a href="signin">Login Now</a></div>   
+        <input type="submit" class="submitBtn" value="Sign up" >
       </div>
     </form>
   </div>

@@ -3,13 +3,13 @@ import cv2
 import pymongo
 import face_recognition
 import numpy as np
-from user.models import face_data
+import user.models as mod
 
 app = Flask(__name__)
 
 #Database
 client = pymongo.MongoClient('localhost', 27017)
-db = client.profile
+db = client.my_db
 
 camera = cv2.VideoCapture(0)
 
@@ -18,8 +18,8 @@ face_locations = []
 face_encodings = []
 face_names = []
 process_this_frame = True
-known_encodings = face_data.known_face_encodings
-known_names = face_data.known_face_names
+known_encodings = mod.face_data().get_fe()
+known_names = mod.face_data().get_fn()
 
 def gen_frames():  
     while True:
@@ -77,14 +77,24 @@ def gen_frames():
 @app.route('/')
 def index():
     return render_template('index.html')
-@app.route('/signin/')
+@app.route('/signin')
 def login():
     return render_template('signin.html')
-@app.route('/signup/')
+@app.route('/signup')
 def vfeed():
     return render_template('signup.html')
 @app.route('/video_feed')
 def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+@app.route('/result.html')
+def Results():
+    try:
+        rows = db.my_db.find()#.limit(10)
+        for row in rows:
+            print(row)
+        return render_template('results.html', names = row)
+
+    except Exception as e:
+        return print("ERROR in RESULTS!!!!!!!!")
 if __name__=='__main__':
     app.run(debug=True)
