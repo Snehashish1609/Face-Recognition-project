@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Signing and Billing</title>
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
 </head>
 <body>
     <div class="base_div">
         <div class="cover left">
             <div class="company"></div>
             <div class="object">
-                <div class="video_feed"></div>
+                <div class="video_feed"><img src="{{ url_for('video_feed') }}" height="100%" width="100%"></div>
                 <div class="side_section">
                     <div class="button">Confirm</div>
                     <a href="signup.html"><div class="button">New User</div></a>
