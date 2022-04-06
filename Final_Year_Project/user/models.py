@@ -2,6 +2,33 @@ from flask import Flask, jsonify, request, session, redirect
 from passlib.hash import pbkdf2_sha256
 from app import db
 import uuid
+import face_recognition
+
+# face_data contains all the face encoding arrays
+class face_data:
+  # Load a second sample picture and learn how to recognize it.
+  sneh_image = face_recognition.load_image_file("user-image/sneh.jpg")
+  sneh_face_encoding = face_recognition.face_encodings(sneh_image)[0]
+
+  idb_image = face_recognition.load_image_file("user-image/IDB.jpg")
+  idb_face_encoding = face_recognition.face_encodings(idb_image)[0]
+
+  ani_image = face_recognition.load_image_file("user-image/Ani.jpg")
+  ani_face_encoding = face_recognition.face_encodings(ani_image)[0]
+
+  # Create arrays of known face encodings and their names
+  known_face_encodings = [
+    #make this into a dynamic array
+    ani_face_encoding,
+    sneh_face_encoding,
+    idb_face_encoding
+  ]
+  known_face_names = [
+    "Anirban",
+    "Snehashish",
+    "Indra Deb Banerjee"
+  ]
+
 
 class User:
 
@@ -18,16 +45,16 @@ class User:
     user = {
       "_id": uuid.uuid4().hex,
       "name": request.form.get('name'),
-      "email": request.form.get('email'),
-      "password": request.form.get('password')
+      "phone": request.form.get('phone'),
+      "address": request.form.get('address')
     }
 
     # Encrypt the password
-    user['password'] = pbkdf2_sha256.encrypt(user['password'])
+    #user['password'] = pbkdf2_sha256.encrypt(user['password'])
 
     # Check for existing email address
-    if db.users.find_one({ "email": user['email'] }):
-      return jsonify({ "error": "Email address already in use" }), 400
+    if db.users.find_one({ "phone": user['phone'] }):
+      return jsonify({ "error": "Phone No. already in use" }), 400
 
     if db.users.insert_one(user):
       return self.start_session(user)
@@ -41,7 +68,7 @@ class User:
   def login(self):
 
     user = db.users.find_one({
-      "email": request.form.get('email')
+      "phone": request.form.get('phone')
     })
 
     if user and pbkdf2_sha256.verify(request.form.get('password'), user['password']):
