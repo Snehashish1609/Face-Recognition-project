@@ -153,3 +153,7 @@ body {
   left: 50%;
   display: inline-block;
 }
+
+.myCanvas{
+  background-image: url("{{ url_for('video_feed') }}"); 
+}

@@ -4,6 +4,7 @@ import pymongo
 import face_recognition
 import numpy as np
 import user.models as mod
+import new_image as ni
 
 app = Flask(__name__)
 
@@ -74,18 +75,18 @@ def gen_frames():
 
 #Routes from user import routes
 
-@app.route('/')
-def index():
-    return render_template('index.html')
 @app.route('/signin')
 def login():
     return render_template('signin.html')
 @app.route('/signup')
-def vfeed():
+def user_signup():
     return render_template('signup.html')
 @app.route('/video_feed')
 def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+@app.route('/new_image_video_feed')
+def new_image_video_feed():
+    return Response(ni.new_image(), mimetype='multipart/x-mixed-replace; boundary=frame')
 @app.route('/result.html')
 def Results():
     try:
