@@ -183,3 +183,42 @@ a{
     color: black;
     text-decoration: none;
 }
+
+
+/*signup page from here on*/
+.signup_base_div{
+    height: 847px;
+    width: 1518px;
+    background-color: var(--first-color);
+    border-color: black;
+    border-width: 2px;
+
+}
+.signup_cover{
+    height: 80%;
+    width: 40%;
+    background-color: var(--second-color);
+    display: inline-block;
+    margin: 6% 0% 0% 6%;
+}
+.signup_left{
+    float: left;
+}
+.video_cover{
+    height: 60%;
+    width: 90%;
+    margin: 5%;
+    margin-left: 9%;
+}
+canvas{
+    display: none;
+}
+.snap_button{
+    height: 5%;
+    width: 10%;
+    background-color: var(--third-color);
+    text-align: center;
+    padding-top: 2%;
+    margin: 3%;
+    margin-left: 45%;
+}
