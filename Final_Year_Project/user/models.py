@@ -2,6 +2,12 @@ from flask import Flask, jsonify, request, session, redirect
 from passlib.hash import pbkdf2_sha256
 import uuid
 import face_recognition
+import pymongo
+import numpy as np
+
+#Database
+client = pymongo.MongoClient('localhost', 27017)
+db = client.my_db
 
 # face_data contains all the face encoding arrays
 class face_data:
@@ -16,17 +22,26 @@ class face_data:
         ani_image = face_recognition.load_image_file("user-image/Ani.jpg")
         ani_face_encoding = face_recognition.face_encodings(ani_image)[0]
 
+        # fetch encodings from mongodb
+        '''self.known_face_encodings = []
+        en = db.my_db.find({}, { 'encoding' :1, '_id' :0})
+        for i in en:
+            self.known_face_encodings.append(np.fromstring(i['encoding'], dtype=float, count=-1, sep=' '))
+        print(self.known_face_encodings) #unsuccessful type conversion <-- to see'''
+
+        # fetching names from mongodb
+        self.known_face_names = []
+        nm = db.my_db.find({}, { 'name' :1, '_id' :0})
+        for j in nm:
+            self.known_face_names.append(j['name'])
+        print(self.known_face_names) #printing array successfully
+
         # Create arrays of known face encodings and their names
         self.known_face_encodings = [
           #make this into a dynamic array
           ani_face_encoding,
           sneh_face_encoding,
           idb_face_encoding
-        ]
-        self.known_face_names = [
-            "Anirban",
-            "Snehashish",
-            "Indra Deb Banerjee"
         ]
 
     def get_fe(self):
@@ -37,7 +52,6 @@ class face_data:
 
 
 
-from app import db
 class User:
 
   def start_session(self, user):
