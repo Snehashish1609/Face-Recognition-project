@@ -11,21 +11,21 @@
 <body>
     <div class="signup_base_div">
         <div class="signup_cover signup_left">
-        
+            <form action="" class="form"></form>
         </div>
         <div class="signup_cover">
             <div class="video_cover">
                 <video id="webcam" autoplay playsinline width="500px" height="375px"></video>
                 <canvas id="canvas" class="d-none"></canvas>
             </div>
-            <a download="image_" onClick = snaps()><div class="snap_button">SNAP</div></a>
+            <a download="image_0.jpg" onClick = snaps()><div class="snap_button">SNAP</div></a>
         </div>
     </div>
 <script>
     const webcamElement = document.getElementById('webcam');
     const canvasElement = document.getElementById('canvas');
     const webcam = new Webcam(webcamElement, 'user', canvasElement);
-    counter = 1;
+    /*counter = 0;*/
 
     webcam.start()
         .then(result =>{
@@ -38,9 +38,9 @@
     function snaps(){
         let picture = webcam.snap();
         document.querySelector("a").href = picture;
-        image_name = "image_".concat(counter);
+        /*image_name = "image_".concat(counter).concat(".jpg");
         document.querySelector("a").download = image_name;
-        counter++;
+        counter++;*/
     }
 </script>
 </body>
