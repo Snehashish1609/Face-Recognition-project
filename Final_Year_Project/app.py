@@ -4,7 +4,7 @@ import pymongo
 import face_recognition
 import numpy as np
 import user.models as mod
-import new_image as ni
+import user.new_image as ni
 
 app = Flask(__name__)
 
