@@ -4,13 +4,13 @@ import pymongo
 import face_recognition
 import numpy as np
 import user.models as mod
-import new_image as ni
+import user.new_image as ni
 
 app = Flask(__name__)
 
 #Database
 client = pymongo.MongoClient('localhost', 27017)
-db = client.my_db
+db = client.demo
 
 camera = cv2.VideoCapture(0)
 
@@ -74,11 +74,13 @@ def gen_frames():
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 #Routes from user import routes
-
+@app.route('/signup', methods=['POST'])
+def signup():
+    return mod.User().signup()
 @app.route('/signin')
 def login():
     return render_template('signin.html')
-@app.route('/signup')
+@app.route('/')
 def user_signup():
     return render_template('signup.html')
 @app.route('/video_feed')
