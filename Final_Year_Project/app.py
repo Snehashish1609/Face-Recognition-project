@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 #Database
 client = pymongo.MongoClient('localhost', 27017)
-db = client.my_db
+db = client.demo
 
 camera = cv2.VideoCapture(0)
 
