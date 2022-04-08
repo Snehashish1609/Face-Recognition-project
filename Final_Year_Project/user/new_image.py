@@ -9,6 +9,10 @@ def new_image():
         if not success:
             break
         else:
+            # save global frame for signup
+            global NEW_FRAME
+            NEW_FRAME = frame
+
             # send response to source
             ret, buffer = cv2.imencode('.jpg', frame)
             frame = buffer.tobytes()

@@ -17,26 +17,26 @@
         </div>
       </div>
     </div>
-    <form action="" class="form">
+    <form action="{{ url_for('signup') }}" method="post" class="form">
       <h1 class="title">Sign up</h1>
 
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a">
-        <label for="" class="label">Email</label>
+        <input type="text" class="input" placeholder="a" name = "name">
+        <label for="" class="label">Name</label>
       </div>
 
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a">
-        <label for="" class="label">Customer name</label>
+        <input type="text" class="input" placeholder="a" name = "phone">
+        <label for="" class="label">Phone</label>
       </div>
 
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a">
-        <label for="" class="label">Phone Number</label>
+        <input type="text" class="input" placeholder="a" name = "add">
+        <label for="" class="label">Address</label>
       </div>
       <div class="text">   
         <div class="login">Already a member? <a href="signin">Login Now</a></div>   
-        <input type="submit" class="submitBtn" value="Sign up" >
+        <input type="submit" class="submitBtn" value="Sign up">
       </div>
     </form>
   </div>
