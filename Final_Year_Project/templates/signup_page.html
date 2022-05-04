@@ -39,7 +39,7 @@
                 <video id="webcam" autoplay playsinline width="500px" height="375px"></video>
                 <canvas id="canvas" class="d-none"></canvas>
             </div>
-            <a id='pic' download="image_0.jpg" onClick = snaps()><div class="snap_button">SNAP</div></a>
+            <a id="pics" download="image_0.jpg" onClick = snaps()><div class="snap_button">SNAP</div></a>
         </div>
     </div>
 <script>
@@ -58,7 +58,7 @@
 
     function snaps(){
         let picture = webcam.snap();
-        document.getElementById("pic").href = picture;
+        document.getElementById("pics").href = picture;
         /*image_name = "image_".concat(counter).concat(".jpg");
         document.querySelector("a").download = image_name;
         counter++;*/
