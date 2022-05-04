@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, session, redirect
 import uuid
 import face_recognition
+import image_encoding as ie
 
 # face_data contains all the face encoding arrays
 class face_data:
@@ -45,16 +46,18 @@ class User:
     session['user'] = user
     return jsonify(user), 200
 
+
   def signup(self):
     print(request.form)
 
+    encoding =  ie.new_image_encoding()
     # Create the user object
     user = {
-        "_id": uuid.uuid4().hex,
         "customerID": request.form.get('id'),
         "name": request.form.get('name'),
         "phone": request.form.get('phone'),
-        "address": request.form.get('add')
+        "address": request.form.get('add'),
+        "encoding": encoding.tolist()
     }
 
     # Encrypt the password
