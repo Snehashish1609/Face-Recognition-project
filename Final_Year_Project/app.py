@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 #Database
 client = pymongo.MongoClient('localhost', 27017)
-db = client.my_db
+db = client.demo
 
 camera = cv2.VideoCapture(0)
 
@@ -77,9 +77,9 @@ def gen_frames():
 @app.route('/signin')
 def login():
     return render_template('signin.html')
-@app.route('/signup')
-def vfeed():
-    return render_template('signup.html')
+@app.route('/signup_page')
+def signup_page():
+    return render_template('signup_page.html')
 @app.route('/video_feed')
 def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')

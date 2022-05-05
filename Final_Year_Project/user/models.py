@@ -40,11 +40,11 @@ class face_data:
 from app import db
 class User:
 
-  def start_session(self, user):
+  '''def start_session(self, user):
     del user['password']
     session['logged_in'] = True
     session['user'] = user
-    return jsonify(user), 200
+    return jsonify(user), 200'''
 
 
   def signup(self):
@@ -53,7 +53,7 @@ class User:
     encoding =  ie.new_image_encoding()
     # Create the user object
     user = {
-        "customerID": request.form.get('id'),
+        "customerID": "002",
         "name": request.form.get('name'),
         "phone": request.form.get('phone'),
         "address": request.form.get('add'),
@@ -64,17 +64,17 @@ class User:
     #user['password'] = pbkdf2_sha256.encrypt(user['password'])
 
     # Check for existing email address
-    if db.users.find_one({ "phone": user['phone'] }):
+    if db.demo.find_one({ "phone": user['phone'] }):
       return jsonify({ "error": "Phone No. already in use" }), 400
 
-    if db.users.insert_one(user):
-      return self.start_session(user)
+    if db.demo.insert_one(user):
+      return redirect('signin')#self.start_session(user)
 
     return jsonify({ "error": "Signup failed" }), 400
   
-  def signout(self):
+  '''def signout(self):
     session.clear()
-    return redirect('/')
+    return redirect('/')'''
   
   '''def login(self):
 
