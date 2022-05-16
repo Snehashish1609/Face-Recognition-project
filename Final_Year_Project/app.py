@@ -3,42 +3,23 @@ import cv2
 import pymongo
 import face_recognition
 import numpy as np
+import user.models as mod
 
 app = Flask(__name__)
 
 #Database
-#client = pymongo.MongoClient('localhost', 27017)
-#db = client.profile
+client = pymongo.MongoClient('localhost', 27017)
+db = client.demo
 
 camera = cv2.VideoCapture(0)
 
-# Load a second sample picture and learn how to recognize it.
-sneh_image = face_recognition.load_image_file("user-image/sneh.jpg")
-sneh_face_encoding = face_recognition.face_encodings(sneh_image)[0]
-
-idb_image = face_recognition.load_image_file("user-image/IDB.jpg")
-idb_face_encoding = face_recognition.face_encodings(idb_image)[0]
-
-ani_image = face_recognition.load_image_file("user-image/Ani.jpg")
-ani_face_encoding = face_recognition.face_encodings(ani_image)[0]
-
-# Create arrays of known face encodings and their names
-known_face_encodings = [
-    #make this into a dynamic array
-    ani_face_encoding,
-    sneh_face_encoding,
-    idb_face_encoding
-]
-known_face_names = [
-    "Anirban",
-    "Snehashish",
-    "Indra Deb Banerjee"
-]
 # Initialize some variables
 face_locations = []
 face_encodings = []
 face_names = []
 process_this_frame = True
+known_encodings = mod.face_data().get_fe()
+known_names = mod.face_data().get_fn()
 
 def gen_frames():  
     while True:
@@ -59,13 +40,13 @@ def gen_frames():
                 face_names = []
                 for face_encoding in face_encodings:
                     # See if the face is a match for the known face(s)
-                    matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
+                    matches = face_recognition.compare_faces(known_encodings, face_encoding)
                     name = "Unknown"
                     # Or instead, use the known face with the smallest distance to the new face
-                    face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
+                    face_distances = face_recognition.face_distance(known_encodings, face_encoding)
                     best_match_index = np.argmin(face_distances)
                     if matches[best_match_index]:
-                        name = known_face_names[best_match_index]
+                        name = known_names[best_match_index]
 
                     face_names.append(name)
             #process_this_frame = not process_this_frame
@@ -91,20 +72,29 @@ def gen_frames():
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
-#Routes
-from user import routes
+#Routes from user import routes
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-@app.route('/login/')
-def login():
-    return render_template('login.html')
-@app.route('/signup/')
-def vfeed():
-    return render_template('vfeed.html')
+@app.route('/signin')
+def signin():
+    return render_template('signin.html')
+@app.route('/signup_page')
+def signup_page():
+    return render_template('signup_page.html')
 @app.route('/video_feed')
 def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+@app.route('/signup', methods=['POST'])
+def signup():
+  return mod.User().signup()
+@app.route('/result.html')
+def Results():
+    try:
+        rows = db.my_db.find()#.limit(10)
+        for row in rows:
+            print(row)
+        return render_template('results.html', names = row)
+
+    except Exception as e:
+        return print("ERROR in RESULTS!!!!!!!!")
 if __name__=='__main__':
     app.run(debug=True)

@@ -1,43 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/base.css">
-    <title>Sign Up Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>SignUp Page</title>
+	<script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+  <link rel="stylesheet" href = "{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div class="head_container">
-        <i><b>COMPANY</b></i>
+	
+	<div class="signupFrm">	
+    <div>
+      <div class="Split Video_Feed">
+        <div class="Video_part">
+            <video id="webCam" autoplay playsinline width="100%" height="100%"></video>
+            <canvas id="canvas"></canvas>
+          </div>
+      </div>
     </div>
+    <form action="" class="form">
+      <h1 class="title">Sign up</h1>
 
-    <div class="main_container">
-        <div class="sub_panels sub_panels_video">
-        </div>
-        
-        <div class="sub_panels">
-            <form method="Post">
-                <div class="input-field">
-                  <input type="text" required name="user">
-                  <label>Customer Name</label>
-                </div>
-                <div class="input-field">
-                    <input type="text" required name="phone">
-                    <label>Phone No.</label>
-                  </div>
-                <div class="input-field">
-                  <input type="text" required name="address">
-                  <label>Address</label>
-                </div>
-                
-            </form>
-            <div class="button" style="float: right; margin-right: 20px;">
-                <div class="inner"></div>
-                <button>Submit Customer Details</button>
-            </div>
-            
-        </div>
-    </div>
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="a">
+        <label for="" class="label">Email</label>
+      </div>
+
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="a">
+        <label for="" class="label">Customer name</label>
+      </div>
+
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="a">
+        <label for="" class="label">Phone Number</label>
+      </div>
+      <div class="text">   
+        <div class="login">Already a member? <a href="signin">Login Now</a></div>   
+        <input type="submit" class="submitBtn" value="Sign up" >
+      </div>
+    </form>
+  </div>
+
+<script>
+  const webCamElement = document.getElementById("webCam");
+  const canvasElement = document.getElementById("canvas");
+  const webcam = new Webcam(webCamElement,"user", canvasElement);
+  webcam.start();
+</script>
 </body>
 </html>

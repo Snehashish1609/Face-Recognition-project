@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href = "{{ url_for('static', filename='base.css') }}">
+    <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+    <title>Sign Up Page</title>
+</head>
+<body>
+    <div class="signup_base_div">
+        <div class="signup_cover signup_left">
+            <form action="{{url_for('signup') }}" method = "post" class="form">
+                <h1 class="title">Sign up</h1>
+
+                <div class="inputContainer">
+                  <input type="text" class="input" placeholder="a" name = "name">
+                  <label for="" class="label">Name</label>
+                </div>
+          
+                <div class="inputContainer">
+                  <input type="text" class="input" placeholder="a" name = "phone">
+                  <label for="" class="label">Phone Number</label>
+                </div>
+          
+                <div class="inputContainer">
+                  <input type="text" class="input" placeholder="a" name = "add">
+                  <label for="" class="label">Address</label>
+                </div>
+                 <div class="text1"> 
+                  <div><input type="submit" class="submitBtn" value="Sign up"></div>
+                  <div class="login">Already a member? <a href="{{url_for('signin') }}">Login Now</a></div>
+                 </div>
+            </form>
+        </div>
+        <div class="signup_cover">
+            <div class="video_cover">
+                <video id="webcam" autoplay playsinline width="500px" height="375px"></video>
+                <canvas id="canvas" class="d-none"></canvas>
+            </div>
+            <a id="pics" download="image_0.jpg" onClick = snaps()><div class="snap_button">SNAP</div></a>
+        </div>
+    </div>
+<script>
+    const webcamElement = document.getElementById('webcam');
+    const canvasElement = document.getElementById('canvas');
+    const webcam = new Webcam(webcamElement, 'user', canvasElement);
+    /*counter = 0;*/
+
+    webcam.start()
+        .then(result =>{
+            console.log("webcam started");
+        })
+        .catch(err => {
+        console.log(err);
+        });
+
+    function snaps(){
+        let picture = webcam.snap();
+        document.getElementById("pics").href = picture;
+        /*image_name = "image_".concat(counter).concat(".jpg");
+        document.querySelector("a").download = image_name;
+        counter++;*/
+    }
+</script>
+</body>
+</html>
