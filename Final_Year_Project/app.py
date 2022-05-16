@@ -75,7 +75,7 @@ def gen_frames():
 #Routes from user import routes
 
 @app.route('/signin')
-def login():
+def signin():
     return render_template('signin.html')
 @app.route('/signup_page')
 def signup_page():

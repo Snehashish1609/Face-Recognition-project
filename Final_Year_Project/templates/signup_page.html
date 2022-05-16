@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href = "{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href = "{{ url_for('static', filename='base.css') }}">
     <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
     <title>Sign Up Page</title>
 </head>
@@ -30,7 +30,7 @@
                 </div>
                  <div class="text1"> 
                   <div><input type="submit" class="submitBtn" value="Sign up"></div>
-                  <div class="login">Already a member? <a href="signin.html">Login Now</a></div>
+                  <div class="login">Already a member? <a href="{{url_for('signin') }}">Login Now</a></div>
                  </div>
             </form>
         </div>
