@@ -75,5 +75,22 @@ def findTotal(product_list):
     total = total + float(res["price"])
   return total
 
+def addPurchaseDetails(product_list):
+  for i in product_list:
+    res = db.product.find_one( {"product_id" : i}, { "_id" : 0 } )
+    product_info = {
+      "product_id": i,
+      "name": res['name'],
+      "price": res['price']
+    }
+    # inserting purchase details one by one
+    db.purchase_details.insert_one(product_info)
+
+    # After successfull purchase the product is also supposed to be deleted from the product table
+    # db.product.delete_one( {'product_id' : i } )
+  return "Success"
+
+# test code
 print(productInfo(pl))
 print(findTotal(pl))
+print(addPurchaseDetails(pl))
