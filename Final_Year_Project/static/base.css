@@ -183,3 +183,155 @@ a{
     color: black;
     text-decoration: none;
 }
+
+
+/*signup page from here on*/
+body{
+    background: url("https://edgeclear.com/wp-content/uploads/2020/05/Sign-up-Page-Background.jpg");
+}
+.signup_base_div{
+    height: 847px;
+    width: 1518px;
+    
+    border-color: black;
+    border-width: 2px;
+
+}
+.signup_cover{
+    height: 70%;
+    width: 40%;
+    background-color: var(--second-color);
+    display: inline-block;
+    margin: 6% 0% 0% 6%;
+}
+.signup_left{
+    float: left;
+   background-color: white; 
+    width: 400px;
+    height: 350px;
+    border-radius: 8px;
+    padding: 10px 20px;
+    box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+    margin-top: 173px;
+    margin-left: 180px;
+}
+.video_cover{
+    height: 60%;
+    width: 90%;
+    margin: 5%;
+    margin-left: 9%;
+}
+canvas{
+    display: none;
+}
+.snap_button{
+    height: 5%;
+    width: 10%;
+    background-color: var(--third-color);
+    text-align: center;
+    padding-top: 2%;
+    margin: 10%;
+    margin-left: 45%;
+}
+
+#Modified_Form_part
+
+
+  .login{
+    margin-right: 10%;
+    display: inline-block;
+    padding: -30px -50px;
+    color: violet;
+  }
+  .text1{
+    margin-bottom: 10%;
+  }
+  
+  .title {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .inputContainer {
+    position: relative;
+    height: 45px;
+    width: 90%;
+    margin-bottom: 17px;
+  }
+  .input {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #DADCE0;
+    border-radius: 7px;
+    font-size: 16px;
+    padding: 0 20px;
+    outline: none;
+    background: none;
+    z-index: 1;
+  }
+  
+  
+  ::placeholder {
+    color: transparent;
+  }
+  .label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 0 4px;
+    background-color: white;
+    color: #DADCE0;
+    font-size: 16px;
+    transition: 0.5s;
+    z-index: 0;
+  }
+  .submitBtn {
+    display: inline-block;
+    margin-left: 65%;
+    padding: 15px 30px;
+    border: none;
+    background-color: purple;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .submitBtn:hover {
+    background-color: #9867C5;
+    transform: translateY(-2px);
+  }
+
+  
+  .input:focus + .label {
+    top: -7px;
+    left: 3px;
+    z-index: 10;
+    font-size: 14px;
+    font-weight: 600;
+    color: purple;
+  }
+  .input:focus {
+    border: 2px solid purple;
+  }
+  .input:not(:placeholder-shown)+ .label {
+    top: -7px;
+    left: 3px;
+    z-index: 10;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .below .text{
+    color: purple;
+    
+    display: inline-block;
+  }
+  .text:hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }

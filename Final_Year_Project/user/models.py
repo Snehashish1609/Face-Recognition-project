@@ -2,7 +2,11 @@ from flask import Flask, jsonify, request, session, redirect
 import uuid
 import cv2
 import face_recognition
+<<<<<<< HEAD
 import user.new_image as ni
+=======
+import image_encoding as ie
+>>>>>>> main
 
 # face_data contains all the face encoding arrays
 class face_data:
@@ -46,10 +50,15 @@ class User:
     session['logged_in'] = True
     session['user'] = user
     return jsonify(user), 200'''
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 
   def signup(self):
     print(request.form)
 
+<<<<<<< HEAD
     # Initializing variables
     new_face_locations = []
     new_face_encodings = []
@@ -70,18 +79,36 @@ class User:
         "phone": request.form.get('phone'),
         "address": request.form.get('add'),
         "encoding": new_face_encoding[0].tolist() # -> mongodb can only store lists in the form of arrays
+=======
+    encoding =  ie.new_image_encoding()
+    # Create the user object
+    user = {
+        "customerID": "002",
+        "name": request.form.get('name'),
+        "phone": request.form.get('phone'),
+        "address": request.form.get('add'),
+        "encoding": encoding.tolist()
+>>>>>>> main
     }
 
     # Encrypt the password
     #user['password'] = pbkdf2_sha256.encrypt(user['password'])
 
     # Check for existing email address
+<<<<<<< HEAD
     '''if db.users.find_one({ "phone": user['phone'] }):
       return jsonify({ "error": "Phone No. already in use" }), 400'''
 
     # user details insertion in db
     if db.demos.insert_one(user):
       return redirect('/signin') # self.start_session(user)
+=======
+    if db.demo.find_one({ "phone": user['phone'] }):
+      return jsonify({ "error": "Phone No. already in use" }), 400
+
+    if db.demo.insert_one(user):
+      return redirect('signin')#self.start_session(user)
+>>>>>>> main
 
     return jsonify({ "error": "Signup failed" }), 400
   
