@@ -7,6 +7,7 @@
 	<title>SignUp Page</title>
 	<script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
   <link rel="stylesheet" href = "{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="../static/base.css">
 </head>
 <body>
 	
@@ -14,14 +15,9 @@
     <div>
       <div class="Split Video_Feed">
         <div class="Video_part">
-<<<<<<< HEAD
-          <img src="{{ url_for('new_image_video_feed') }}" height="100px" width="100px" style = "background-color: black;">
-        </div>
-=======
             <video id="webCam" autoplay playsinline width="100%" height="100%"></video>
             <canvas id="canvas"></canvas>
           </div>
->>>>>>> main
       </div>
     </div>
     <form action="{{ url_for('signup') }}" method="post" class="form">

@@ -74,27 +74,9 @@ def gen_frames():
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 #Routes from user import routes
-<<<<<<< HEAD
-@app.route('/signup', methods=['POST'])
-def signup():
-    return mod.User().signup()
-=======
-
->>>>>>> main
 @app.route('/signin')
 def signin():
     return render_template('signin.html')
-<<<<<<< HEAD
-@app.route('/')
-def user_signup():
-    return render_template('signup.html')
-@app.route('/video_feed')
-def video_feed():
-    return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
-@app.route('/new_image_video_feed')
-def new_image_video_feed():
-    return Response(ni.new_image(), mimetype='multipart/x-mixed-replace; boundary=frame')
-=======
 @app.route('/signup_page')
 def signup_page():
     return render_template('signup_page.html')
@@ -104,7 +86,6 @@ def video_feed():
 @app.route('/signup', methods=['POST'])
 def signup():
   return mod.User().signup()
->>>>>>> main
 @app.route('/result.html')
 def Results():
     try:

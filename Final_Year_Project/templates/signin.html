@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Signing and Billing</title>
     <link rel="stylesheet" href = "{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="../static/base.css">
 </head>
 <body>
     <div class="base_div">
@@ -13,16 +14,17 @@
             <div class="object">
                 <div class="video_feed"><img src="{{ url_for('video_feed') }}" height="100%" width="100%"></div>
                 <div class="side_section">
-                    <div class="button">Confirm</div>
-                    <a href="{{ url_for('signup_page')}}"><div class="button">New User</div></a>
+                    <div class="button button_1">Refresh</div>
+                    <div class="button button_2">Confirm</div>
+                    <a href="{{ url_for('signup_page')}}"><div class="button button_3">New User</div></a>
                 </div>
             </div>
             <div class="object fancy">
                 <div class="contacts"><h1>Contacts</h1></div>
-                <div class="unique_id"><h5>Unique_Id</h5></div>
-                <div class="name"><h5>Name</h5></div>
-                <div class="phone"><h5>Phone No.</h5></div>
-                <div class="email"><h5>Email</h5></div>
+                <div class="unique_id"><h4>Unique_Id:&emsp;</h4><p>debargya_029</p></div>
+                <div class="name"><h4>Name:&emsp;</h4><p>Debargya Sen</p></div>
+                <div class="phone"><h4>Phone No.:&emsp;</h4><p>8777851449</p></div>
+                <div class="email"><h4>Email:&emsp;</h4><p>sen_debargya@gmail.com</p></div>
             </div>
         </div>
         <div class="cover">
@@ -39,25 +41,25 @@
                             <td>1</td>
                             <td>23911</td>
                             <td>Polo T-Shirt(Blue)</td>
-                            <td>399</td>
+                            <td class="price">399</td>
                         </tr>
                         <tr>
                             <td>2</td>
                             <td>73122</td>
                             <td>Denim Jeans</td>
-                            <td>1299</td>
+                            <td class="price">1299</td>
                         </tr>
                         <tr>
                             <td>3</td>
                             <td>35293</td>
                             <td>Olive Green Casual Shirt</td>
-                            <td>799</td>
+                            <td class="price">799</td>
                         </tr>
                         <tr>
                             <td>4</td>
                             <td>52118</td>
                             <td>Urban T-shirt (Yellow)</td>
-                            <td>499</td>
+                            <td class="price">499</td>
                         </tr>
                         </tr>    
                     </table>
@@ -65,6 +67,14 @@
                 <div class="down">
                     <div class="price_left"><b>Total Price</b></div>
                     <div class="price_right"><b>2996.00</b></div>
+                </div>
+                <div class="buttons_section">
+                    <div class="button">Product</div>
+                    <div class="button">Customer</div>
+                    <div class="button">Purchase</div>
+                    <div class="button">Return</div>
+                    <div class="button">Fetch</div>
+                    <div class="button">Payment</div>
                 </div>
             </div>
         </div>
