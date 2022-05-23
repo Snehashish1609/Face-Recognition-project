@@ -235,7 +235,15 @@ a{
 
 /*signup page from here on*/
 body{
-    background: url("https://edgeclear.com/wp-content/uploads/2020/05/Sign-up-Page-Background.jpg");
+
+    background-color: #63d471;
+    background-image: linear-gradient(315deg, #63d471 0%, #233329 50%);
+/*
+    background-color: #166d3b;
+    background-image: linear-gradient(147deg, #000000 30%, #166d3b 74%);
+*/
+    background-image: linear-gradient(0deg, rgba(19, 98, 7, 1) 20%, rgba(0, 73, 0, 1) 40%, rgba(0, 50, 0, 1) 60%, rgba(0, 29, 0, 1) 80%, rgba(0, 0, 0, 1) 100%);
+    
 }
 .signup_base_div{
     height: 847px;
@@ -248,18 +256,17 @@ body{
 .signup_cover{
     height: 70%;
     width: 40%;
-    background-color: var(--second-color);
     display: inline-block;
     margin: 6% 0% 0% 6%;
 }
 .signup_left{
     float: left;
-   background-color: white; 
+    background-color: white;
     width: 400px;
-    height: 350px;
+    height: 375px;
     border-radius: 8px;
     padding: 10px 20px;
-    box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+    box-shadow: 0 10px 25px rgb(92 99 105 / 20%);
     margin-top: 173px;
     margin-left: 180px;
 }
@@ -269,27 +276,55 @@ body{
     margin: 5%;
     margin-left: 9%;
 }
+video{
+    border-radius: 2%;
+    margin-top: inherit;
+}
 canvas{
     display: none;
 }
 .snap_button{
-    height: 5%;
-    width: 10%;
-    background-color: var(--third-color);
+    height: 3%;
+    width: 12%;
     text-align: center;
-    padding-top: 2%;
     margin: 10%;
-    margin-left: 45%;
+    margin-left: 35%;
+    padding: 13px 30px;
+    border: 2px solid var(--first-color);
+    background-color: var(--first-color);
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-right: 0%;
+    margin-bottom: 5%;
+    font-family: sans-serif;
+    float: left;
+}
+.snap_button:hover{
+    background-color: var(--second-color);
+    transform: translateY(-2px);
+    border-color: var(--second-color);
 }
 
-#Modified_Form_part
+/*Modified_Form_part*/
 
 
   .login{
     margin-right: 10%;
     display: inline-block;
-    padding: -30px -50px;
-    color: violet;
+    color: black;
+    margin-top: -10%;
+    padding: 4%;
+  }
+  .login a{
+      color: purple;
+      text-decoration: none;
+  }
+  .login a:hover{
+      padding: 2px;
+      background-color: var(--forth-color);
   }
   .text1{
     margin-bottom: 10%;
@@ -337,8 +372,7 @@ canvas{
     z-index: 0;
   }
   .submitBtn {
-    display: inline-block;
-    margin-left: 65%;
+    margin-left: 6%;
     padding: 15px 30px;
     border: none;
     background-color: purple;
@@ -347,6 +381,7 @@ canvas{
     cursor: pointer;
     font-size: 16px;
     margin-top: 10px;
+    float: left;
   }
   
   .submitBtn:hover {

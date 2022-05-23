@@ -12,8 +12,6 @@ app = Flask(__name__)
 client = pymongo.MongoClient('localhost', 27017)
 db = client.demo
 
-camera = cv2.VideoCapture(0)
-
 # Initialize some variables
 face_locations = []
 face_encodings = []
@@ -23,6 +21,7 @@ known_encodings = mod.face_data().get_fe()
 known_names = mod.face_data().get_fn()
 
 def gen_frames():  
+    camera = cv2.VideoCapture(0)
     while True:
         success, frame = camera.read()  # read the camera frame
         if not success:

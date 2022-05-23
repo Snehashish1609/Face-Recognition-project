@@ -29,7 +29,8 @@
                   <input type="text" class="input" placeholder="a" name = "add">
                   <label for="" class="label">Address</label>
                 </div>
-                 <div class="text1"> 
+                 <div class="text1">
+                  <a id="pics" download="image_0.jpg" onClick = snaps()><div class="snap_button">Snap</div></a> 
                   <div><input type="submit" class="submitBtn" value="Sign up"></div>
                   <div class="login">Already a member? <a href="{{url_for('signin') }}">Login Now</a></div>
                  </div>
@@ -37,10 +38,9 @@
         </div>
         <div class="signup_cover">
             <div class="video_cover">
-                <video id="webcam" autoplay playsinline width="500px" height="375px"></video>
+                <video id="webcam" autoplay playsinline width="600" height="450"></video>
                 <canvas id="canvas" class="d-none"></canvas>
             </div>
-            <a id="pics" download="image_0.jpg" onClick = snaps()><div class="snap_button">SNAP</div></a>
         </div>
     </div>
 <script>
