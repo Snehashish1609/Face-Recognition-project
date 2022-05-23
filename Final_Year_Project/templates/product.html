@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/base.css">
+    <link rel="stylesheet" href = "{{ url_for('static', filename='base.css') }}">
     <title>Product Details</title>
 </head>
 <body>
@@ -44,10 +45,10 @@
                 </table>
             </div>
         <div class="details_buttons_section">
-            <div class="button">Product</div>
-            <div class="button">Customer</div>
-            <div class="button">Purchase</div>
-            <div class="button">Return</div>
+            <a href="{{ url_for('product')}}"><div class="button">Product</div></a>
+            <a href="{{ url_for('customer')}}"><div class="button">Customer</div></a>
+            <a href="{{ url_for('purchase')}}"><div class="button">Purchase</div></a>
+            <a href="{{ url_for('returnd')}}"><div class="button">Return</div></a>
         </div>
         </div>
     </div>

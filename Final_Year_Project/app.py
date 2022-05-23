@@ -85,6 +85,18 @@ def video_feed():
 @app.route('/signup', methods=['POST'])
 def signup():
   return mod.User().signup()
+@app.route('/product')
+def product():
+    return render_template('product.html')
+@app.route('/customer')
+def customer():
+    return render_template('customer.html')
+@app.route('/purchase')
+def purchase():
+    return render_template('purchase.html')
+@app.route('/return')
+def returnd():
+    return render_template('return.html')
 @app.route('/result.html')
 def Results():
     try:
