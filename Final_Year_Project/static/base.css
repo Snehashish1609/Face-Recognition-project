@@ -217,16 +217,19 @@ a{
 }
 .buttons_section{
     height: 9.7%;
-    display: flex;
+    display: block;
     background-color: var(--first-color);
     justify-content: right;
     margin-left: -1%;
     margin-right: -1%;
 }
-.buttons_section .button{
+.buttons_section a{
+    text-decoration: none;
+}
+.buttons_section a .button{
     margin-top: 3%;
     height: 33%;
-    width: 12%;
+    width: 10%;
     padding: 1%;
     margin-right: 2%;
     margin-left: 2%;
@@ -472,15 +475,17 @@ canvas{
 }
 .details_buttons_section{
     height: 9.4%;
-    display: flex;
-    background-color: var(--forth-color);
-    justify-content: right;
 }
-.details_buttons_section .button{
-    margin-top: 7.2%;
+.details_buttons_section a{
+    text-decoration: none;
+}
+.sp{
+    margin-top: 1%;
     height: 33%;
     width: 8%;
     padding: 1%;
     margin-right: 2%;
     margin-left: 1%;
+    display: block;
+    float: right;
 }

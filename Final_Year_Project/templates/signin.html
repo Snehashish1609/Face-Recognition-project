@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Signing and Billing</title>
     <link rel="stylesheet" href = "{{ url_for('static', filename='base.css') }}">
-    <link rel="stylesheet" href="../static/base.css">
 </head>
 <body>
     <div class="base_div">
@@ -73,8 +72,8 @@
                     <a href="{{ url_for('customer')}}"><div class="button">Customer</div></a>
                     <a href="{{ url_for('purchase')}}"><div class="button">Purchase</div></a>
                     <a href="{{ url_for('returnd')}}"><div class="button">Return</div></a>
-                    <div class="button">Fetch</div>
-                    <div class="button">Payment</div>
+                    <a href=""><div class="button">Fetch</div></a>
+                    <a href=""><div class="button">Payment</div></a>
                 </div>
             </div>
         </div>
